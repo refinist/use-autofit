@@ -1,0 +1,75 @@
+{
+  "name": "use-autofit",
+  "version": "0.0.0",
+  "description": "autofit.js wrapper",
+  "keywords": [
+    "autofit",
+    "vue",
+    "vue3",
+    "vue-composable",
+    "dashboard"
+  ],
+  "homepage": "https://github.com/refinist/use-autofit#readme",
+  "bugs": {
+    "url": "https://github.com/refinist/use-autofit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/refinist/use-autofit.git"
+  },
+  "license": "MIT",
+  "author": "Jeff Wang",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev:app": "vite",
+    "format": "prettier --write .",
+    "format-check": "prettier --check .",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "prepublishOnly": "pnpm run build",
+    "release": "bumpp && pnpm publish",
+    "type-check": "tsc --noEmit -p tsconfig.tsdown.json"
+  },
+  "prettier": "@refinist/prettier-config",
+  "dependencies": {
+    "autofit.js": "^3.2.8"
+  },
+  "devDependencies": {
+    "@refinist/eslint-config": "^0.0.3",
+    "@refinist/prettier-config": "^0.0.3",
+    "@tsconfig/node22": "^22.0.1",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vitejs/plugin-vue-jsx": "^4.1.2",
+    "@vue/tsconfig": "^0.7.0",
+    "bumpp": "^10.1.1",
+    "eslint": "^9.28.0",
+    "npm-run-all2": "^7.0.2",
+    "prettier": "^3.5.3",
+    "tsdown": "^0.12.6",
+    "typescript": "~5.8.0",
+    "vite": "npm:rolldown-vite@latest",
+    "vite-plugin-vue-devtools": "^7.7.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vue-tsc": "^2.2.8"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
