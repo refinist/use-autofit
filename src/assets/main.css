@@ -5,6 +5,8 @@
   margin: 0;
   font-weight: normal;
 }
+
+html,
 body,
 #app {
   width: 100%;

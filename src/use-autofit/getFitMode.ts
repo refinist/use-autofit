@@ -1,7 +1,7 @@
 import type { FitMode } from './types';
 const keyName = { value: 'fit-mode' };
 
-// 优先级：传入的 fitMode > url 参数 > cookie > localStorage
+// 优先级：代码传入的 fitMode > url 参数 > cookie > localStorage
 export function getFitMode(): FitMode {
   const key = keyName.value;
 
@@ -18,7 +18,7 @@ export function getFitMode(): FitMode {
   const localStorageValue = localStorage.getItem(key);
   if (localStorageValue) return localStorageValue as FitMode;
 
-  return 'fill';
+  return 'none';
 }
 
 export function setKeyName(name: string) {

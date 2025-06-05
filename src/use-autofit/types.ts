@@ -1,6 +1,6 @@
 import type { AutofitOption } from 'autofit.js';
 import type { MaybeRefOrGetter } from 'vue';
-export type FitMode = 'widthFix' | 'fill';
+export type FitMode = 'widthFix' | 'fill' | 'none';
 export type { AutofitOption };
 export type WidthFixOptions = Pick<
   AutofitOption,

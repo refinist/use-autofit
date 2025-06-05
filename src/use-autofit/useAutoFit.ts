@@ -15,7 +15,7 @@ export function useAutoFit(options: Options = {}): {
     val => {
       val = val ?? getFitMode();
       // check fitMode
-      if (!['widthFix', 'fill'].includes(val)) val = 'fill';
+      if (!['widthFix', 'fill', 'none'].includes(val)) val = 'fill';
       if (val === 'widthFix') {
         autofit.off(options.el);
         autoWidthFix(options);
@@ -28,6 +28,9 @@ export function useAutoFit(options: Options = {}): {
           },
           false
         );
+      } else {
+        autoWidthFix.off();
+        autofit.off(options.el);
       }
     },
     { immediate: true }

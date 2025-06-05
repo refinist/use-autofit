@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { inject, ref, type Ref } from 'vue';
 import type { FitMode } from '../use-autofit';
-const fitMode = inject<Ref<FitMode>>('fitMode');
+const fitMode = inject<Ref<FitMode>>('fitMode')!;
 
 const backgroundColor = ref(getRandomColor());
 
@@ -12,17 +12,45 @@ function getRandomColor() {
     .padStart(6, '0')}`;
 }
 
-const handleClick = () => {
-  fitMode!.value = fitMode!.value === 'widthFix' ? 'fill' : 'widthFix';
+const handleChange = () => {
   backgroundColor.value = getRandomColor();
 };
 </script>
 
 <template>
   <div class="home" :style="{ backgroundColor }">
-    <button class="btn" @click="handleClick">
-      {{ fitMode }}
-    </button>
+    <div class="select">
+      <label>
+        <input
+          v-model="fitMode"
+          type="radio"
+          name="fitMode"
+          value="fill"
+          @change="handleChange"
+        />
+        fill
+      </label>
+      <label>
+        <input
+          v-model="fitMode"
+          type="radio"
+          name="fitMode"
+          value="widthFix"
+          @change="handleChange"
+        />
+        widthFix
+      </label>
+      <label>
+        <input
+          v-model="fitMode"
+          type="radio"
+          name="fitMode"
+          value="none"
+          @change="handleChange"
+        />
+        none
+      </label>
+    </div>
   </div>
 </template>
 
@@ -31,17 +59,23 @@ const handleClick = () => {
   width: 100%;
   height: 100%;
 }
-.btn {
+.select {
+  white-space: nowrap;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 12px 24px;
-  border-radius: 8px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  cursor: pointer;
   font-size: 32px;
+}
+
+.select label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.select label input {
+  margin-right: 12px;
+  transform: scale(1.5);
 }
 </style>
