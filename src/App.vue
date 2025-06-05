@@ -8,7 +8,8 @@ provide('fitMode', fitMode);
 
 useAutoFit({
   fitMode,
-  verticalAlign: 'center'
+  verticalAlign: 'center',
+  detectFitMode: import.meta.env.DEV
 });
 </script>
 

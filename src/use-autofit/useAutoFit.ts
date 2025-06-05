@@ -4,20 +4,19 @@ import type { Options } from './types';
 import { autoWidthFix } from './autoWidthFix';
 import { getFitMode } from './getFitMode';
 
-// 定义返回类型接口
-
 export function useAutoFit(options: Options = {}): {
   autofit: typeof autofit;
   elRectification: typeof elRectification;
 } {
+  const { el, detectFitMode = true } = options;
   watch(
     () => toValue(options.fitMode),
     val => {
-      val = val ?? getFitMode();
+      val = val ?? (detectFitMode ? getFitMode() : 'fill');
       // check fitMode
       if (!['widthFix', 'fill', 'none'].includes(val)) val = 'fill';
       if (val === 'widthFix') {
-        autofit.off(options.el);
+        autofit.off(el);
         autoWidthFix(options);
       } else if (val === 'fill') {
         autoWidthFix.off();
@@ -30,7 +29,7 @@ export function useAutoFit(options: Options = {}): {
         );
       } else {
         autoWidthFix.off();
-        autofit.off(options.el);
+        autofit.off(el);
       }
     },
     { immediate: true }
